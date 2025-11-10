@@ -59,5 +59,17 @@
       <p><a class="btn" style="background:#ec4899" href="https://docs.google.com/forms/d/e/1FAIpQLSdqQgY-FLZFEMLjjtuU-S6s8kTSJqRT21QuKcAsvJboZDNk-g/viewform?usp=pp_url&entry.999999=Topic%20Suggestion" target="_blank" rel="noopener">Submit Topic</a></p>
     </section>
   </main>
+  <!-- 🔒 Simple access-code protection -->
+<script>
+const access = prompt("Enter Student Access Code:");
+if (access !== "PB2025") {
+  document.body.innerHTML = `
+    <div style="text-align:center;margin-top:80px;font-family:sans-serif">
+      <h2>Access Denied</h2>
+      <p>Please contact the organising team for your portal code.</p>
+      <a href="mailto:g.divya_11@yahoo.co.in" style="color:#2563eb;font-weight:600">Email Support</a>
+    </div>`;
+}
+</script>
 </body>
 </html>
