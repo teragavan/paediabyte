@@ -59,17 +59,47 @@
       <p><a class="btn" style="background:#ec4899" href="https://docs.google.com/forms/d/e/1FAIpQLSdqQgY-FLZFEMLjjtuU-S6s8kTSJqRT21QuKcAsvJboZDNk-g/viewform?usp=pp_url&entry.999999=Topic%20Suggestion" target="_blank" rel="noopener">Submit Topic</a></p>
     </section>
   </main>
-  <!-- 🔒 Simple access-code protection -->
+  <!-- 🔒 Simple overlay access gate -->
+<style>
+  #pb-gate{position:fixed;inset:0;background:rgba(15,23,42,.9);display:flex;align-items:center;justify-content:center;z-index:9999}
+  #pb-card{background:#fff;border-radius:16px;max-width:420px;width:92%;padding:22px;border:1px solid #e8eef7;
+           font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+  #pb-card h3{margin:0 0 6px;font-size:20px}
+  #pb-card p{margin:6px 0 14px;color:#475569}
+  #pb-code{width:100%;padding:12px 14px;border:1px solid #d8e0ef;border-radius:12px;font-size:16px}
+  #pb-row{display:flex;gap:10px;margin-top:12px}
+  #pb-btn{padding:10px 14px;border-radius:999px;border:1px solid #dbe5ff;background:#2563eb;color:#fff;font-weight:700;cursor:pointer}
+  #pb-help{padding:10px 14px;border-radius:999px;border:1px solid #e5d9ff;background:#7c3aed;color:#fff;font-weight:700;text-decoration:none}
+  #pb-err{color:#b91c1c;margin-top:8px;min-height:20px}
+</style>
+<div id="pb-gate" aria-modal="true" role="dialog">
+  <div id="pb-card">
+    <h3>Enter Student Access Code</h3>
+    <p>Check your confirmation email. Need help? Use the button below.</p>
+    <input id="pb-code" type="password" placeholder="Access code" autocomplete="off" />
+    <div id="pb-row">
+      <button id="pb-btn">Enter</button>
+      <a id="pb-help" href="mailto:g.divya_11@yahoo.co.in?subject=PaediaByte%20Portal%20Access">Email Support</a>
+    </div>
+    <div id="pb-err"></div>
+  </div>
+</div>
 <script>
-const access = prompt("Enter Student Access Code:");
-if (access !== "PB2025") {
-  document.body.innerHTML = `
-    <div style="text-align:center;margin-top:80px;font-family:sans-serif">
-      <h2>Access Denied</h2>
-      <p>Please contact the organising team for your portal code.</p>
-      <a href="mailto:g.divya_11@yahoo.co.in" style="color:#2563eb;font-weight:600">Email Support</a>
-    </div>`;
-}
+  const ACCESS_CODE = "PB2025"; // change this anytime
+  const gate = document.getElementById('pb-gate');
+  const code = document.getElementById('pb-code');
+  const err  = document.getElementById('pb-err');
+  document.getElementById('pb-btn').onclick = () => {
+    if ((code.value || '').trim() === ACCESS_CODE){
+      gate.style.display = 'none';
+      sessionStorage.setItem('pb_ok','1');
+    } else {
+      err.textContent = "Invalid code. Please try again.";
+    }
+  };
+  // auto-open if already passed in this tab
+  if (sessionStorage.getItem('pb_ok') === '1') gate.style.display = 'none';
 </script>
+
 </body>
 </html>
