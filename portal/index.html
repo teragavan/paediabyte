@@ -1,105 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PaediaByte – Student Portal</title>
-  <meta name="robots" content="noindex, follow" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{--bg:#fff;--text:#0f172a;--muted:#475569;--card:#f8fafc;--blue:#2563eb;--purple:#7c3aed;--pink:#ec4899;--radius:16px}
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--text)}
-    header{padding:56px 20px 24px;text-align:center;color:#fff;background:linear-gradient(135deg,rgba(37,99,235,.9),rgba(124,58,237,.9) 50%,rgba(236,72,153,.9))}
-    h1{margin:0 0 6px;font-weight:800;letter-spacing:-.02em}
-    main{max-width:900px;margin:0 auto;padding:28px 20px 60px}
-    .card{background:var(--card);border:1px solid #e8eef7;border-radius:var(--radius);padding:20px;margin-bottom:14px}
-    .btn{display:inline-block;padding:10px 14px;border-radius:999px;text-decoration:none;color:#fff;background:var(--blue);font-weight:700}
-    .grid{display:grid;grid-template-columns:1fr;gap:14px}
-    @media(min-width:760px){.grid{grid-template-columns:1fr 1fr}}
-    ul{margin:8px 0 0 18px}
-  </style>
-</head>
-<body>
-  <header>
-    <h1>PaediaByte – Student Portal</h1>
-    <p>Registered students can access schedules, links and recordings.</p>
-  </header>
-
-  <main>
-    <section class="card">
-      <h2>Login / Access</h2>
-      <p>If you are a new student, please <a class="btn" href="/paediabyte/register/">Register here</a>.</p>
-      <p class="muted">Later this page can include a proper login via Firebase or Cloudflare Access.</p>
-    </section>
-
-    <div class="grid">
-      <section class="card">
-        <h3>Upcoming Sessions</h3>
-        <ul>
-          <li><strong>Neonatology Essentials</strong> – Fri 7 PM IST – Zoom link will be emailed</li>
-          <li><strong>PICU Ventilation Basics</strong> – Wed 7 PM IST – link TBA</li>
-        </ul>
-      </section>
-
-      <section class="card">
-        <h3>Recordings (example)</h3>
-        <ul>
-          <li><a href="#" aria-disabled="true">Feb Case Discussions (login required)</a></li>
-          <li><a href="#" aria-disabled="true">Cardiology Q&A (login required)</a></li>
-        </ul>
-        <p class="muted">Add your Google Drive / YouTube unlisted links here later.</p>
-      </section>
-    </div>
-
-    <section class="card">
-      <h3>Suggest a Topic</h3>
-      <p>Tell us what you want covered next.</p>
-      <p><a class="btn" style="background:#ec4899" href="https://docs.google.com/forms/d/e/1FAIpQLSdqQgY-FLZFEMLjjtuU-S6s8kTSJqRT21QuKcAsvJboZDNk-g/viewform?usp=pp_url&entry.999999=Topic%20Suggestion" target="_blank" rel="noopener">Submit Topic</a></p>
-    </section>
-  </main>
-  <!-- 🔒 Simple overlay access gate -->
-<style>
-  #pb-gate{position:fixed;inset:0;background:rgba(15,23,42,.9);display:flex;align-items:center;justify-content:center;z-index:9999}
-  #pb-card{background:#fff;border-radius:16px;max-width:420px;width:92%;padding:22px;border:1px solid #e8eef7;
-           font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
-  #pb-card h3{margin:0 0 6px;font-size:20px}
-  #pb-card p{margin:6px 0 14px;color:#475569}
-  #pb-code{width:100%;padding:12px 14px;border:1px solid #d8e0ef;border-radius:12px;font-size:16px}
-  #pb-row{display:flex;gap:10px;margin-top:12px}
-  #pb-btn{padding:10px 14px;border-radius:999px;border:1px solid #dbe5ff;background:#2563eb;color:#fff;font-weight:700;cursor:pointer}
-  #pb-help{padding:10px 14px;border-radius:999px;border:1px solid #e5d9ff;background:#7c3aed;color:#fff;font-weight:700;text-decoration:none}
-  #pb-err{color:#b91c1c;margin-top:8px;min-height:20px}
-</style>
-<div id="pb-gate" aria-modal="true" role="dialog">
-  <div id="pb-card">
-    <h3>Enter Student Access Code</h3>
-    <p>Check your confirmation email. Need help? Use the button below.</p>
-    <input id="pb-code" type="password" placeholder="Access code" autocomplete="off" />
-    <div id="pb-row">
-      <button id="pb-btn">Enter</button>
-      <a id="pb-help" href="mailto:g.divya_11@yahoo.co.in?subject=PaediaByte%20Portal%20Access">Email Support</a>
-    </div>
-    <div id="pb-err"></div>
-  </div>
-</div>
+<!-- 🔒 Access gate -> redirect to dashboard -->
 <script>
-  const ACCESS_CODE = "PB2025"; // change this anytime
-  const gate = document.getElementById('pb-gate');
-  const code = document.getElementById('pb-code');
-  const err  = document.getElementById('pb-err');
-  document.getElementById('pb-btn').onclick = () => {
-    if ((code.value || '').trim() === ACCESS_CODE){
-      gate.style.display = 'none';
+  const ACCESS_CODE = "PB2025"; // change anytime
+  // if already verified in this tab, go straight to dashboard
+  if (sessionStorage.getItem('pb_ok') === '1') {
+    window.location.href = '/paediabyte/portal/dashboard/';
+  } else {
+    const access = prompt("Enter Student Access Code:");
+    if ((access || '').trim() === ACCESS_CODE) {
       sessionStorage.setItem('pb_ok','1');
+      window.location.href = '/paediabyte/portal/dashboard/';
     } else {
-      err.textContent = "Invalid code. Please try again.";
+      document.body.innerHTML = `
+        <div style="text-align:center;margin-top:80px;font-family:sans-serif">
+          <h2>Access Denied</h2>
+          <p>Please contact the organising team for your portal code.</p>
+          <a href="mailto:g.divya_11@yahoo.co.in" style="color:#2563eb;font-weight:600">Email Support</a>
+        </div>`;
     }
-  };
-  // auto-open if already passed in this tab
-  if (sessionStorage.getItem('pb_ok') === '1') gate.style.display = 'none';
+  }
 </script>
-
-</body>
-</html>
