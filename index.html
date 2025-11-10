@@ -22,7 +22,7 @@
   <meta name="twitter:description" content="Online teaching modules for paediatric postgraduates, organised by paediatricians in India & the UK." />
   <meta name="twitter:image" content="https://teragavan.github.io/paediabyte/og-image.jpg" />
 
-  <!-- Schema.org (adds brand stronger for SEO of the keyword \"PaediaByte\") -->
+  <!-- Schema.org (org) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -30,9 +30,7 @@
     "name": "PaediaByte",
     "alternateName": ["PaediaByte!", "Paedibyte"],
     "url": "https://teragavan.github.io/paediabyte/",
-    "sameAs": [
-      "https://teragavan.github.io/paediabyte/"
-    ],
+    "sameAs": ["https://teragavan.github.io/paediabyte/"],
     "description": "Online teaching modules for paediatric postgraduates, organised by paediatricians in India & the UK.",
     "contactPoint": [{
       "@type": "ContactPoint",
@@ -41,6 +39,44 @@
       "telephone": "+91-9998515814",
       "areaServed": "IN,GB"
     }]
+  }
+  </script>
+
+  <!-- Schema.org (events) – optional but recommended -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"ItemList",
+    "name":"PaediaByte Upcoming Sessions",
+    "itemListElement":[
+      {
+        "@type":"Event",
+        "name":"Nutrition in Preterm Neonates",
+        "startDate":"2025-11-05",
+        "eventAttendanceMode":"https://schema.org/OnlineEventAttendanceMode",
+        "eventStatus":"https://schema.org/EventScheduled",
+        "location":{"@type":"VirtualLocation","url":"https://teragavan.github.io/paediabyte/"},
+        "organizer":{"@type":"Organization","name":"PaediaByte"}
+      },
+      {
+        "@type":"Event",
+        "name":"Paediatric Tuberculosis",
+        "startDate":"2025-11-27",
+        "eventAttendanceMode":"https://schema.org/OnlineEventAttendanceMode",
+        "eventStatus":"https://schema.org/EventScheduled",
+        "location":{"@type":"VirtualLocation","url":"https://teragavan.github.io/paediabyte/"},
+        "organizer":{"@type":"Organization","name":"PaediaByte"}
+      },
+      {
+        "@type":"Event",
+        "name":"Fluid & Electrolyte in PICU",
+        "startDate":"2025-12-13",
+        "eventAttendanceMode":"https://schema.org/OnlineEventAttendanceMode",
+        "eventStatus":"https://schema.org/EventScheduled",
+        "location":{"@type":"VirtualLocation","url":"https://teragavan.github.io/paediabyte/"},
+        "organizer":{"@type":"Organization","name":"PaediaByte"}
+      }
+    ]
   }
   </script>
 
@@ -130,9 +166,34 @@
         <h3 class="section-title">Contact</h3>
         <p><strong>Organising Lead:</strong> Dr. Divya Gopalan</p>
         <p><strong>Email:</strong> <a href="mailto:g.divya_11@yahoo.co.in">g.divya_11@yahoo.co.in</a></p>
-        <p><strong>WhatsApp (optional):</strong> +91‑9998515814</p>
+        <p><strong>WhatsApp (optional):</strong> +91-9998515814</p>
       </aside>
     </div>
+
+    <!-- Upcoming Sessions (added) -->
+    <div class="container">
+      <section class="card" aria-labelledby="upcoming-title">
+        <h2 class="section-title" id="upcoming-title">Upcoming Sessions</h2>
+        <ul style="margin:0; padding-left:20px">
+          <li>
+            <strong>Nutrition in Preterm Neonates</strong> —
+            <time datetime="2025-11-05">Nov 5</time> —
+            <em>Link TBA</em>
+          </li>
+          <li>
+            <strong>Paediatric Tuberculosis</strong> —
+            <time datetime="2025-11-27">Nov 27</time> —
+            <em>Link TBA</em>
+          </li>
+          <li>
+            <strong>Fluid &amp; Electrolyte in PICU</strong> —
+            <time datetime="2025-12-13">Dec 13</time> —
+            <em>Link TBA</em>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <!-- /Upcoming Sessions -->
 
     <div class="container">
       <section class="card">
