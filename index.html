@@ -137,6 +137,25 @@
     .feat strong{display:block; color:var(--blue)}
 
     footer{padding:28px 20px; text-align:center; color:var(--muted); border-top:1px solid #eef2f7; background:#fcfdff}
+
+    /* Optional: make videos responsive */
+    .video-wrapper{
+      position:relative;
+      padding-bottom:56.25%; /* 16:9 */
+      height:0;
+      overflow:hidden;
+      border-radius:14px;
+      background:#000;
+      margin-top:10px;
+    }
+    .video-wrapper iframe{
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      border:0;
+    }
   </style>
 </head>
 <body>
@@ -144,7 +163,7 @@
     <div class="container">
       <div class="brand-badge" aria-label="PaediaByte brand">PaediaByte • Paediatric Teaching</div>
       <h1>PaediaByte!</h1>
-      <p class="subtitle">Online teaching for <strong>Paediatric Postgraduates</strong>. Organised by paediatricians in India & the UK to help you stay current alongside busy clinical schedules.</p>
+      <p class="subtitle">Online teaching for <strong>Paediatric Postgraduates</strong>. Organised by paediatricians in India &amp; the UK to help you stay current alongside busy clinical schedules.</p>
       <div class="cta" role="navigation" aria-label="primary">
         <a class="btn primary" href="/paediabyte/register/">Register (New Student)</a>
         <a class="btn pink" href="https://docs.google.com/forms/d/e/1FAIpQLSdqQgY-FLZFEMLjjtuU-S6s8kTSJqRT21QuKcAsvJboZDNk-g/viewform?usp=pp_url&entry.999999=Topic%20Suggestion" target="_blank" rel="noopener">Suggest a Topic</a>
@@ -161,8 +180,8 @@
         <p>Dear Paediatric Postgraduates,</p>
         <p>We are conducting online teaching sessions for you, to help keep up on the academic front amidst your busy clinical schedule. Tell us which topics you find challenging so we can prioritise sessions accordingly. <a href="https://docs.google.com/forms/d/e/1FAIpQLSdqQgY-FLZFEMLjjtuU-S6s8kTSJqRT21QuKcAsvJboZDNk-g/viewform?usp=pp_url&entry.999999=Topic%20Suggestion" target="_blank" rel="noopener">Suggest a topic</a>.</p>
         <div class="features" aria-label="Key features">
-          <div class="feat"><strong>Live Sessions</strong>Interactive teaching by paediatricians from India & the UK.</div>
-          <div class="feat"><strong>Student Portal</strong>Registered students can log in to access schedules & recordings.</div>
+          <div class="feat"><strong>Live Sessions</strong>Interactive teaching by paediatricians from India &amp; the UK.</div>
+          <div class="feat"><strong>Student Portal</strong>Registered students can log in to access schedules &amp; recordings.</div>
           <div class="feat"><strong>By Students, For Students</strong>Vote or submit your topics to shape the curriculum.</div>
         </div>
         <p class="muted">— Team PaediaByte</p>
@@ -203,6 +222,30 @@
       </section>
     </div>
     <!-- /Upcoming Sessions -->
+
+    <!-- PaediaByte Videos -->
+    <div class="container">
+      <section class="card" aria-labelledby="videos-title">
+        <h2 class="section-title" id="videos-title">PaediaByte Videos</h2>
+        <p class="muted">
+          Selected teaching sessions and introductory videos for paediatric postgraduates. More videos will be added over time.
+        </p>
+        <div class="video-wrapper" aria-label="PaediaByte video">
+          <iframe
+            src="https://drive.google.com/file/d/1fiGTCp31rgNUwdMXHaqrGSWjDdK2Bjpr/preview"
+            allow="autoplay"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <p style="margin-top:10px;">
+          If the video does not load, you can open it directly in Google Drive:&nbsp;
+          <a href="https://drive.google.com/file/d/1fiGTCp31rgNUwdMXHaqrGSWjDdK2Bjpr/view?usp=drivesdk" target="_blank" rel="noopener">
+            Open PaediaByte video
+          </a>.
+        </p>
+      </section>
+    </div>
+    <!-- /PaediaByte Videos -->
 
     <div class="container">
       <section class="card">
